@@ -1,15 +1,15 @@
 ## Golf Column
 
-Classic rotating column effect in a 323 byte HTML file.
+Classic rotating column effect in a 317 byte HTML file.
 
 ### [View it live](https://jaburns.github.io/golfcolumn/)
 
 ### Final source
 ```
-<b id=A></b><b id=B><style onload="t=99;q=0;P=1.57;C=Math.cos;setInterval(_=>{for(T=t+=.04*C(q/4);T>
-P;T-=P);[Z=A.style,B.style].map((x,i)=>{x.width=200*C(T-P*i);x.background=`#f${[X=70,83,X,61][(0|t/P
-+i)%4]}`});Z.marginLeft=350*C(q+=.02)},30)">*{margin:0;text-align:center;height:100%;background:#144
-}b{display:inline-block
+<b id=A></b><b id=B><style onload="q=t=99;setInterval(_=>{for(T=t+=.04*(C=Math.cos)(q/4);T>(P=1.57);
+T-=P);[Z=A.style,B.style].map((x,i)=>{x.width=200*C(T-P*i);x.background=`#f${[7,8,7,6][(0|t/P+i)%4]}
+3`});Z.marginLeft=350*C(q+=.02)},30)">*{margin:0;text-align:center;height:100%;background:#144}b{dis
+play:inline-block
 ```
 
 ### Source with whitespace
@@ -33,23 +33,20 @@ b {
 
 #### Javascript
 ```javascript
-t = 99;
-q = 0;
-P = 1.57;
-C = Math.cos;
+q = t = 99;
 
-setInterval(_=>{
+setInterval(_ => {
     for(
-        T = t += .04 * C(q / 4);
-        T > P;
+        T = t += .04 * (C=Math.cos)(q / 4);
+        T > (P=1.57);
         T -= P
     );
 
-    [Z=A.style,B.style].map((x,i)=> {
+    [Z=A.style,B.style].map((x,i) => {
         x.width = 200 * C(T-P*i);
-        x.background = `#f${[X=70,83,X,61][ (0|t/P+i) % 4 ]}`
+        x.background = `#f${[7,8,7,6][ (0|t/P+i) % 4 ]}3`
     });
 
     Z.marginLeft = 350 * C(q+=.02)
-},30)
+}, 30)
 ```
